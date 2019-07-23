@@ -1,5 +1,4 @@
 import includes from 'lodash/includes';
-import isArray from 'lodash/isArray';
 
 function single(image: string): Promise<any> {
   return new Promise((resolve, reject) => {
@@ -18,7 +17,7 @@ function single(image: string): Promise<any> {
 }
 
 export default function preloadImages(images: string | string[]): Promise<any> {
-  if (isArray(images)) {
+  if (Array.isArray(images)) {
     return Promise.all((images as string[]).map((image: string) => single(image)))
   }
   return single(images as string);
